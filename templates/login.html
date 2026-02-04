@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="login-container">
+  <div class="login-card">
+    <h2>Login to HIT Study Hub</h2>
+    <p class="login-sub">
+      Access resources and admin features
+    </p>
+
+    <form method="POST" class="login-form">
+      <input
+        name="username"
+        placeholder="Username"
+        required
+      >
+
+      <input
+        name="password"
+        type="password"
+        placeholder="Password"
+        required
+      >
+
+      <button class="btn primary full" type="submit">
+        Login
+      </button>
+    </form>
+
+    <p class="hint">
+      Admin login: <strong>Admin access only</strong>
+    </p>
+  </div>
+</div>
+
+{% endblock %}

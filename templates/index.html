@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="badge">New Resources Updated for 2026</span>
+
+    <h1>
+      Your Ultimate <br>
+      <span>Study Companion</span>
+    </h1>
+
+    <p>
+      Access curated notes, past year questions, and lab manuals
+      tailored for Haldia Institute of Technology students.
+    </p>
+
+    <div class="cta">
+      <a href="{{ url_for('resources') }}" class="btn primary">
+        Browse Resources <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="{{ url_for('pyqs') }}" class="btn secondary">
+        Download PYQs
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS SECTION -->
+<section class="stats">
+  <div class="stat">
+    <h2>0</h2>
+    <p>Resources</p>
+  </div>
+  <div class="stat">
+    <h2>0</h2>
+    <p>Active Students</p>
+  </div>
+  <div class="stat">
+    <h2>0</h2>
+    <p>Downloads</p>
+  </div>
+  <div class="stat">
+    <h2>0</h2>
+    <p>Subjects</p>
+  </div>
+</section>
+
+<!-- RECENT UPLOADS -->
+<section class="recent">
+  <div class="recent-head">
+    <div>
+      <h2>Recent Uploads</h2>
+      <p>Latest study materials added by faculty and seniors.</p>
+    </div>
+    <a href="{{ url_for('resources') }}">View All <i class="fa-solid fa-arrow-right"></i> </a>
+  </div>
+
+  <div class="recent-grid">
+    {% if recent_resources %}
+      {% for r in recent_resources %}
+        <div class="resource-card">
+          <div class="card-header">
+            <div class="file-icon"><i class="fa-regular fa-file-lines"></i></div>
+            <span class="resource-badge">
+              {{ 'PYQ' if r['is_pyq'] == 1 else 'Notes' }}
+            </span>
+          </div>
+
+          <h3 class="title">{{ r['subject'] }}</h3>
+          <p class="subtitle">{{ r['chapter'] }}</p>
+          <div class="meta">
+          <span><i class="fa-solid fa-user"></i> {{ r['author'] if r['author'] else 'Faculty' }}</span>
+          </div>
+          <div class="tags">
+            <span class="pill">{{ r['branch'] }}</span>
+            <span class="pill">{{ r['semester'] }}</span>
+          </div>
+
+         <div class="card-footer">
+  <a href="{{ url_for('download', filename=r['filename']) }}"
+     class="download-btn">
+    <i class="fa-solid fa-download"></i> Download
+  </a>
+
+  {% if session.get('role') == 'admin' %}
+    <div>
+      <a href="{{ url_for('edit_resource', rid=r['id']) }}"
+         class="edit-btn">
+         <i class="fa-regular fa-pen-to-square"></i> Edit
+      </a>
+
+      <a href="{{ url_for('delete_resource', rid=r['id']) }}"
+         class="delete-btn"
+         onclick="return confirm('Are you sure you want to delete this resource?')">
+         <i class="fa-solid fa-trash-can"></i> Delete
+      </a>
+    </div>
+  {% endif %}
+</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No recent uploads yet.</p>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

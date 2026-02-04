@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="admin-upload-page">
+  <div class="admin-upload-card">
+
+    <h2>Edit Resource</h2>
+    <p class="admin-sub">PDF will remain same. You can edit details only.</p>
+
+    <form method="POST">
+<!-- 
+      <label>Resource Title</label>
+      <input
+      type="text"
+      name="title"
+      value="{{ r['title'] }}"
+      placeholder="e.g. Data Structures Notes Module 1"
+      required > -->
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select name="type" required>
+          <option value="">Select type</option>
+          <option value="chapter" {{ 'selected' if resource and resource.type=='chapter' }}>chapter</option>
+          <option value="Notes" {{ 'selected' if resource and resource.type=='Notes' }}>Notes</option>
+          <option value="PYQ" {{ 'selected' if resource and resource.type=='PYQ' }}>PYQ</option>
+          <option value="Lab Manual" {{ 'selected' if resource and resource.type=='Lab Manual' }}>Lab Manual</option>
+          <option value="Assignment" {{ 'selected' if resource and resource.type=='Assignment' }}>Assignment</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Branch</label>
+          <select name="branch">
+          <option value="">Select branch</option>
+          <option value="CSE" {{ 'selected' if resource and resource.branch=='CSE' }}>CSE</option>
+          <option value="ECE" {{ 'selected' if resource and resource.branch=='ECE' }}>ECE</option>
+          <option value="EE"  {{ 'selected' if resource and resource.branch=='EE'  }}>EE</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Semester</label>
+          <select name="semester" required>
+          <option value="">Select semester</option>
+          <option value="1st Sem" {{ 'selected' if resource and resource.semester=='1st Sem' }}>1st Sem</option>
+          <option value="2nd Sem" {{ 'selected' if resource and resource.semester=='2nd Sem' }}>2nd Sem</option>
+          <option value="3rd Sem" {{ 'selected' if resource and resource.semester=='3rd Sem' }}>3rd Sem</option>
+          <option value="4th Sem" {{ 'selected' if resource and resource.semester=='4th Sem' }}>4th Sem</option>
+          <option value="5th Sem" {{ 'selected' if resource and resource.semester=='5th Sem' }}>5th Sem</option>
+          <option value="6th Sem" {{ 'selected' if resource and resource.semester=='6th Sem' }}>6th Sem</option>
+          <option value="7th Sem" {{ 'selected' if resource and resource.semester=='7th Sem' }}>7th Sem</option>
+          <option value="8th Sem" {{ 'selected' if resource and resource.semester=='8th Sem' }}>8th Sem</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Year</label>
+          <select name="year" required>
+          <option value="">Select year</option>
+          <option value="1st Year" {{ 'selected' if resource and resource.year=='1st Year' }}>1st Year</option>
+          <option value="2nd Year" {{ 'selected' if resource and resource.year=='2nd Year' }}>2nd Year</option>
+          <option value="3rd Year" {{ 'selected' if resource and resource.year=='3rd Year' }}>3rd Year</option>
+          <option value="4th Year" {{ 'selected' if resource and resource.year=='4th Year' }}>4th Year</option>
+          </select>
+        </div>
+      </div>
+
+      <label>Subject Name</label>
+      <input name="subject" value="{{ r['subject'] }}" required>
+
+      <label>Chapter / Note Title</label>
+      <input name="chapter" value="{{ r['chapter'] }}" required>
+
+      <label>Faculty / Uploaded By</label>
+      <input name="author" value="{{ r['author'] }}">
+
+      <div class="form-actions">
+        <a href="{{ url_for('index') }}" class="btn cancel-btn">Cancel</a>
+        <button type="submit" class="btn primary upload-btn"><i class="fa-regular fa-floppy-disk"></i> Save Changes</button>
+      </div>
+
+    </form>
+    
+  </div>
+</section>
+
+{% endblock %} 
+ 
