@@ -41,7 +41,7 @@ def init_db():
         uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
     ''')
-    # users (very simple)
+    # users 
     cur.execute('''
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -100,7 +100,7 @@ def resources():
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # filter defaults (show all)
+    # filter defaults 
     year = request.values.get('year') or ''
     branch = request.values.get('branch') or ''
     semester = request.values.get('semester') or ''
@@ -144,7 +144,7 @@ def download(filename):
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload():
-    # only allow admin (simple session-based)
+    # only allow admin 
     if 'user' not in session or session.get('role') != 'admin':
         flash('Admin login required to upload.', 'error')
         return redirect(url_for('login'))
@@ -212,7 +212,7 @@ def delete_resource(rid):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # filename lao
+    # filename 
     cur.execute("SELECT filename FROM resources WHERE id=?", (rid,))
     row = cur.fetchone()
 
@@ -243,7 +243,7 @@ def edit_resource(rid):
     conn = get_db_connection()
     cur = conn.cursor()
 
-    # existing resource lao
+    # existing resource 
     cur.execute("SELECT * FROM resources WHERE id=?", (rid,))
     resource = cur.fetchone()
 
@@ -308,3 +308,4 @@ def logout():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=3000, debug=True)
+
