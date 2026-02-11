@@ -1,4 +1,4 @@
-/* ================= ROOT THEME ================= */
+/* ROOT THEME  */
 :root {
   --primary: #2563eb;
   --accent: #16a34a;
@@ -8,7 +8,7 @@
   --muted: #64748b;
 }
 
-/* ================= RESET ================= */
+/*  RESET */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -21,13 +21,13 @@ body {
   color: var(--text);
 }
 
-/* ================= LINKS ================= */
+/*  LINKS  */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* ================= NAVBAR ================= */
+/*  NAVBAR  */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -46,9 +46,9 @@ a {
   color: var(--primary);
 }
 
-/* LOGO IMAGE SIZE CONTROL (THIS FIXES BIG LOGO) */
+/* LOGO IMAGE SIZE CONTROL  */
 .brand-logo {
-  height: 38px;   /*perfect navbar size */
+  height: 38px;   
   width: auto;
   object-fit: contain;
 }
@@ -60,16 +60,17 @@ a {
   color: var(--primary);
 }
 
-/* ================= CONTAINER ================= */
+/*  CONTAINER  */
 .container {
   max-width: 1100px;
-  margin: 40px auto;
+  /* margin: 0 auto 40px auto; */
+  margin: 30px auto 40px auto;
   padding: 0 16px;
 }
 
-/* ================= HERO / BANNER ================= */
+/*  HERO / BANNER */
 .hero {
-  background: url("/static/images/banner.jpg") center/cover no-repeat;
+  /* background: url("/static/images/banner.jpg") center/cover no-repeat; */
   padding: 90px 60px;
   border-radius: 18px;
   position: relative;
@@ -133,7 +134,7 @@ a {
   color: #166534;
 }
 
-/* ================= BUTTONS ================= */
+/*  BUTTONS  */
 .cta {
   display: flex;
   gap: 14px;
@@ -162,7 +163,7 @@ a {
   color: white;
 }
 
-/* ================= FEATURES ================= */
+/*  FEATURES  */
 .features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -187,27 +188,12 @@ a {
   font-size: 14px;
 }
 
-/* ================= RESOURCE LIST ================= */
-/* ================= NEW RESOURCE CARD (FEATURE STYLE) ================= */
+/* RESOURCE LIST */
 
 .resource-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 40px;
-}
-
-@media (max-width: 1024px) {
-  .resource-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;   /* YEH ADD KARO */
-  }
-}
-
-@media (max-width: 640px) {
-  .resource-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;   /* mobile spacing */
-  }
 }
 
 .resource-card {
@@ -219,7 +205,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 6px;   /* BAS YE ADD KARO */
+  margin: 6px;   
 
   width: 100%;
   max-width: 100%;
@@ -284,7 +270,7 @@ a {
   border: 1px solid #e5e7eb;
 }
 
-/* FIX footer spacing after removing year */
+/* footer spacing  */
 .card-footer {
   display: flex;
   gap: 12px;
@@ -324,7 +310,7 @@ a {
   box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35);
 }
 
-/* ================= FILTERS ================= */
+/* FILTERS  */
 .filters {
   display: flex;
   gap: 10px;
@@ -339,7 +325,7 @@ a {
   border: 1px solid #e5e7eb;
 }
 
-/* ================= FORMS ================= */
+/*  FORMS  */
 .upload-form input,
 .upload-form select,
 .login-form input {
@@ -350,9 +336,9 @@ a {
   border: 1px solid #e5e7eb;
 }
 
-/* ================= FOOTER ================= */
+/*  FOOTER  */
   .footer {
-  border-top: 1.5px solid #e5e7eb;   /* EXACT BORDER */
+  border-top: 1.5px solid #e5e7eb;   
   background: #f9fafb;
   margin-top: 60px;
 }
@@ -370,15 +356,8 @@ a {
   color: #6b7280;
 } 
 
-@media (max-width: 600px) {
-  .footer-inner {
-    flex-direction: column;
-    gap: 6px;
-    text-align: center;
-  }
-}
 
-/* ================= FLASH ================= */
+/*  FLASH */
 .flash-success {
   background: #ecfdf5;
   color: #065f46;
@@ -393,16 +372,6 @@ a {
   border-radius: 10px;
 }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .hero {
-    padding: 60px 24px;
-  }
-
-  .hero h1 {
-    font-size: 32px;
-  }
-}
   .features {
     grid-template-columns: 1fr;
   }
@@ -417,16 +386,15 @@ a {
 
 /* Navbar link default color */
 .nav-links a {
-  color: #0f172a;        /* normal text */
+  color: #0f172a;        
   transition: color 0.2s ease;
 }
 
 /* Navbar hover effect */
 .nav-links a:hover {
-  color: #2563eb;        /* blue on cursor */
+  color: #2563eb;       
 }
 
-/* ===== STATS SECTION ===== */
 /* STATS SECTION */
 .stats {
   display: grid;
@@ -439,7 +407,7 @@ a {
 
 .stat {
   background: #ffffff;
-  border: 1.5px solid #e5e7eb;   /* 🔥 BORDER */
+  border: 1.5px solid #e5e7eb;   
   border-radius: 14px;
   padding: 28px 20px;
   text-align: center;
@@ -458,22 +426,13 @@ a {
   color: #6b7280;
 }
 
-/* Hover effect (professional feel) */
+/* Hover effect  */
 .stat:hover {
   border-color: #2563eb;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
   transform: translateY(-5px);
 }
 
-
-/* Responsive */
-@media (max-width: 768px) {
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-/* ===== RECENT UPLOADS ===== */
 .recent {
   margin-top: 60px;
 }
@@ -522,18 +481,6 @@ a {
   margin-bottom: 14px;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
-  .recent-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .recent-grid {
-    grid-template-columns: 1fr;
-  }
-}
 /* LOGIN PAGE */
 .login-container {
   min-height: 70vh;
@@ -586,17 +533,17 @@ a {
   font-size: 0.85rem;
   color: #6b7280;
 }
-/* ================= LOGIN BUTTON (BORDER ONLY) ================= */
+/* LOGIN BUTTON (BORDER ONLY) */
 .login-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   padding: 6px 14px;
 
-  border: 1.5px solid #9ca3af;   /* border only */
+  border: 1.5px solid #9ca3af;   
   border-radius: 10px;
 
-  background: transparent;      /* NO background */
+  background: transparent;      
   color: #111827;
 
   font-weight: 500;
@@ -609,10 +556,10 @@ a {
 .login-btn:hover {
   border-color: #2563eb;
   color:#2563eb;
-  background: transparent;      /* still no background */
+  background: transparent;      
 }
-/* ================= RESOURCES PAGE (DASHBOARD LAYOUT) ================= */
 
+/* RESOURCES PAGE (DASHBOARD LAYOUT) */
 .resources-page {
   display: grid;
   grid-template-columns: 260px 1fr;
@@ -690,18 +637,7 @@ a {
   margin-bottom: 26px;
 }
 
-@media (max-width: 1024px) {
-  .resource-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .resources-page {
-    grid-template-columns: 1fr;
-  }
-}
-/* ================= PYQS PAGE ================= */
+/* PYQS PAGE  */
 
 /* HERO */
 .pyqs-hero {
@@ -800,23 +736,8 @@ a {
   text-align: center;
 }
 
-/* RESPONSIVE */
-@media (max-width: 900px) {
-  .pyqs-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 
-@media (max-width: 600px) {
-  .pyqs-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .pyqs-hero h1 {
-    font-size: 30px;
-  }
-}
-/* ================= ADMIN UPLOAD PAGE ================= */
+/* ADMIN UPLOAD PAGE */
 
 .admin-upload-page {
   min-height: 70vh;
@@ -828,7 +749,7 @@ a {
 
 .admin-upload-card {
   width: 100%;
-  max-width: 720px;          /* perfect centered width */
+  max-width: 720px;          
   background: #ffffff;
   padding: 32px;
   border-radius: 18px;
@@ -876,7 +797,8 @@ a {
 .btn.full {
   width: 100%;
 }
-/* ================= DRAG & DROP UPLOAD ================= */
+
+/* DRAG & DROP UPLOAD */
 
 .file-drop {
   position: relative;
@@ -922,11 +844,11 @@ a {
   color: #64748b;
   font-size: 13px;
 }
-/* ================= FORM ACTION BUTTONS ================= */
 
+/* FORM ACTION BUTTONS  */
 .form-actions {
   display: flex;
-  justify-content: space-between; /* left & right */
+  justify-content: space-between; 
   align-items: center;
   margin-top: 28px;
 }
@@ -945,7 +867,7 @@ a {
   border-radius: 10px;
   font-size: 14px;
 }
-/* ================= ADMIN FORM GRID ================= */
+/*  ADMIN FORM GRID  */
 
 .upload-form {
   margin-top: 20px;
@@ -966,19 +888,14 @@ a {
   font-weight: 500;
 }
 
-/* inputs already styled, just ensure full width */
+/* inputs already styled */
 .form-group select,
 .form-group input {
   width: 100%;
 }
 
-/* responsive: mobile = single column */
-@media (max-width: 640px) {
-  .form-row {
-    grid-template-columns: 1fr;
-  }
-}
-/* ================= ADMIN DASHBOARD HEADER ================= */
+
+/* ADMIN DASHBOARD HEADER */
 
 .admin-header {
   text-align: center;
@@ -997,12 +914,6 @@ a {
   color: #64748b;
 }
 
-/* mobile friendly */
-@media (max-width: 600px) {
-  .admin-header h1 {
-    font-size: 28px;
-  }
-}
 .action-buttons {
   display: flex;
   gap: 10px;
@@ -1010,9 +921,7 @@ a {
   flex-wrap: nowrap;  
 }
 
-
-
-/* ===== ACTION BUTTONS (Edit / Delete like Download) ===== */
+/*  ACTION BUTTONS (Edit / Delete like Download) */
 
 .edit-btn,
 .delete-btn {
@@ -1061,4 +970,157 @@ a {
   box-shadow: 0 8px 20px rgba(220,38,38,0.3);
 }
 
+
+/* FINAL MOBILE RESPONSIVE SYSTEM */
+
+@media (max-width: 1024px) {
+
+  /* Tablet adjustments */
+  .resource-grid,
+  .recent-grid,
+  .pyqs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+}
+
+/*  MOBILE*/
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    margin: 20px auto;
+    padding: 0 16px;
+  }
+
+  /* NAVBAR  */
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  /*  HERO  */
+  .hero {
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  .hero-inner {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+  .hero h1 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .cta {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cta .btn {
+    width: 100%;
+  }
+
+  /* STATS  */
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /*  RECENT  */
+  .recent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /*  RESOURCES PAGE  */
+  .resources-page {
+    grid-template-columns: 1fr;
+  }
+
+  .resources-sidebar {
+    margin-bottom: 20px;
+  }
+
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* RESOURCE CARD BUTTONS  */
+  .card-footer {
+    flex-direction: column;
+  }
+
+  .card-footer .actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .download-btn,
+  .edit-btn,
+  .delete-btn {
+    width: 100%;
+  }
+
+  /*  PYQS */
+  .pyqs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pyqs-hero h1 {
+    font-size: 26px;
+  }
+
+  /*  ADMIN FORM  */
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .upload-btn {
+    width: 100%;
+  }
+
+}
+
+/* EXTRA SMALL DEVICES */
+
+@media (max-width: 480px) {
+
+  .hero h1 {
+    font-size: 22px;
+  }
+
+  .stat h2 {
+    font-size: 24px;
+  }
+
+}
 
