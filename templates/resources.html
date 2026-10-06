@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="resources-page">
+
+  <!-- ================= LEFT SIDEBAR ================= -->
+  <aside class="resources-sidebar">
+
+    <h3>Filters</h3>
+
+    <!-- SUBJECT TABS (JS based) -->
+    <div class="subject-tabs">
+      <button class="tab active" data-subject="all">All</button>
+      <button class="tab" data-subject="dsa">DSA</button>
+      <button class="tab" data-subject="coa">COA</button>
+      <button class="tab" data-subject="os">OS</button>
+      <button class="tab" data-subject="dbms">DBMS</button>
+    </div>
+
+    <!-- FILTER FORM (Flask backend) -->
+    <form class="filters" method="GET" action="{{ url_for('resources') }}">
+
+      <label>Academic Year</label>
+      <select name="year">
+        <option value="">All Years</option>
+        <option value="1st Year" {{ 'selected' if filters.year=='1st Year' else '' }}>1st Year</option>
+        <option value="2nd Year" {{ 'selected' if filters.year=='2nd Year' else '' }}>2nd Year</option>
+        <option value="3rd Year" {{ 'selected' if filters.year=='3rd Year' else '' }}>3rd Year</option>
+        <option value="4th Year" {{ 'selected' if filters.year=='4th Year' else '' }}>4th Year</option>
+      </select>
+
+      <label>Branch</label>
+      <select name="branch">
+        <option value="">All Branches</option>
+        <option value="CSE" {{ 'selected' if filters.branch=='CSE' else '' }}>CSE</option>
+        <option value="IT"  {{ 'selected' if filters.branch=='IT'  else '' }}>IT</option>
+        <option value="ECE" {{ 'selected' if filters.branch=='ECE' else '' }}>ECE</option>
+        <option value="EE"  {{ 'selected' if filters.branch=='EE'  else '' }}>EE</option>
+        <option value="ME"  {{ 'selected' if filters.branch=='ME'  else '' }}>ME</option>
+        <option value="CE"  {{ 'selected' if filters.branch=='CE'  else '' }}>CE</option>
+      </select>
+
+      <label>Semester</label>
+      <select name="semester">
+        <option value="">All Semesters</option>
+        <option value="1st Sem" {{ 'selected' if filters.semester=='1st Sem' else '' }}>1st Sem</option>
+        <option value="2nd Sem" {{ 'selected' if filters.semester=='2nd Sem' else '' }}>2nd Sem</option>
+        <option value="3rd Sem" {{ 'selected' if filters.semester=='3rd Sem' else '' }}>3rd Sem</option>
+        <option value="4th Sem" {{ 'selected' if filters.semester=='4th Sem' else '' }}>4th Sem</option>
+        <option value="5th Sem" {{ 'selected' if filters.semester=='5th Sem' else '' }}>5th Sem</option>
+        <option value="6th Sem" {{ 'selected' if filters.semester=='6th Sem' else '' }}>6th Sem</option>
+        <option value="7th Sem" {{ 'selected' if filters.semester=='7th Sem' else '' }}>7th Sem</option>
+        <option value="8th Sem" {{ 'selected' if filters.semester=='8th Sem' else '' }}>8th Sem</option>
+      </select>
+
+      <input type="text" name="subject" placeholder="Subject name..."
+         value="{{ filters.subject }}">
+
+      <button class="btn">Apply Filters</button>
+    </form>
+
+  </aside>
+
+  <!-- ================= RIGHT CONTENT ================= -->
+  <div class="resources-main">
+
+    <h2>Study Resources</h2>
+    <p class="subtitle">
+      Browse notes, assignments, lab manuals, and PYQs by department and semester.
+    </p>
+
+    <!-- LIVE SEARCH (JS) -->
+    <input
+      type="text"
+      id="searchInput"
+      class="resource-search"
+      placeholder="Search by title or subject..."/>
+
+     <!-- RESOURCE GRID -->
+      <div class="resource-grid">
+
+        {% if resources %}
+        {% for r in resources %}
+
+       <div class="resource-item" data-subject="{{ r['subject'] | lower }}">
+        <div class="resource-card">
+
+          <div class="card-header">
+            <div class="file-icon"><i class="fa-regular fa-file-lines"></i></div>
+            <span class="resource-badge">
+              {{ r['type'] if r['type'] else 'Notes' }}
+            </span>
+          </div>
+
+          <h3 class="title">{{ r['subject'] }}</h3>
+          <p class="subtitle">{{ r['chapter'] }}</p>
+
+          <div class="meta">
+            <div>
+              <i class="fa-solid fa-user"></i>
+              {{ r['uploaded_by'] if r['uploaded_by'] else 'Faculty' }}
+            </div>
+          </div>
+          
+          <div class="tags">
+            <span class="pill">CSE</span>
+            <span class="pill">3rd Sem</span>
+          </div>
+
+          <div class="card-footer">
+            <div class="actions action-buttons">
+              <a href="{{ url_for('download', filename=r['filename']) }}"
+                 class="btn download-btn">
+                 <i class="fa-solid fa-download"></i> Download
+              </a>
+
+              {% if session.get('role') == 'admin' %}
+                <a href="{{ url_for('edit_resource', rid=r['id']) }}"
+                   class="btn edit-btn">
+                   <i class="fa-solid fa-pen-to-square"></i> Edit
+                </a>
+
+                <a href="{{ url_for('delete_resource', rid=r['id']) }}"
+                   class="btn delete-btn"
+                   onclick="return confirm('Delete this resource?')">
+                   <i class="fa-solid fa-trash-can"></i> Delete
+                </a>
+              {% endif %}
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    {% endfor %}
+  {% else %}
+    <p>No resources found.</p>
+  {% endif %}
+
+  </div>
+
+    <!-- EMPTY STATE -->
+    <p id="noResults" class="no-results" style="display:none;">
+      No matching resources found
+    </p>
+
+  </div>
+
+</section>
+
+{% endblock %}

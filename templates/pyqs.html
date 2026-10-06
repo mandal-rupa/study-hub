@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- ================= PYQS HERO ================= -->
+<section class="pyqs-hero">
+  <div class="pyqs-hero-inner">
+    <h1>Past Year Questions</h1>
+    <p>
+      Download previous year semester examination question papers to
+      prepare better for your exams.
+    </p>
+  </div>
+</section>
+
+<!-- ================= BRANCH TABS ================= -->
+<section class="pyqs-tabs container">
+  <button class="tab active">CSE</button>
+  <button class="tab">IT</button>
+  <button class="tab">ECE</button>
+  <button class="tab">EE</button>
+  <button class="tab">ME</button>
+  <button class="tab">CE</button>
+  <button class="tab">CHE</button>
+  <button class="tab">BT</button>
+</section>
+
+<!-- ================= PYQS GRID ================= -->
+<section class="container">
+  {% if pyqs %}
+  <div class="pyqs-grid">
+    {% for q in pyqs %}
+    <div class="pyq-card">
+
+      <div class="pyq-title">
+        <i class="fa-solid fa-file-pdf"></i> {{ q.year }} - {{ q.semester }}
+      </div>
+
+      <p class="pyq-sub">
+        {{ q.branch }} Examination
+      </p>
+
+      <a href="{{ url_for('download', filename=q.filename) }}"
+         class="btn outline full">
+        <i class="fa-solid fa-download"></i> Download PDF Bundle
+      </a>
+
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p style="margin-top:30px; color:#64748b;">
+      No PYQs uploaded yet.
+    </p>
+  {% endif %}
+</section>
+
+{% endblock %}
+

@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- ===== ADMIN DASHBOARD HEADER ===== -->
+<section class="admin-header">
+  <h1>Admin Dashboard</h1>
+  <p>Upload new study materials for students.</p>
+</section>
+
+<!-- ===== UPLOAD CARD ===== -->
+<section class="admin-upload-page">
+
+  <div class="admin-upload-card">
+
+    <h2>Upload Resource</h2>
+    <p class="admin-sub">
+      Fill in the details below to add a new study resource to the hub.
+    </p>
+
+    <form method="POST" enctype="multipart/form-data" class="upload-form">
+
+      <!-- Resource Title -->
+      <label>Resource Title</label>
+      <input name="title" placeholder="e.g. Data Structures Notes Module 1" required>
+
+      <!-- Row 1 -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Type</label>
+          <select name="type" required>
+            <option value="">Select type</option>
+            <option value="Book">Book</option>
+            <option value="Module">Module</option>
+            <option value="chapter">chapter</option>
+            <option value="Notes">Notes</option>
+            <option value="Lab Manual">Lab Manual</option>
+            <option value="PYQ">PYQ</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Branch</label>
+          <select name="branch" required>
+            <option value="">Select branch</option>
+            <option value="CSE">CSE</option>
+            <option value="IT">IT</option>
+            <option value="ECE">ECE</option>
+            <option value="EE">EE</option>
+            <option value="ME">ME</option>
+            <option value="CE">CE</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="form-row">
+        <div class="form-group">
+          <label>Year</label>
+          <select name="year" required>
+            <option value="">Select year</option>
+            <option value="1st Year">1st Year</option>
+            <option value="2nd Year">2nd Year</option>
+            <option value="3rd Year">3rd Year</option>
+            <option value="4th Year">4th Year</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Semester</label>
+          <select name="semester" required>
+            <option value="">Select semester</option>
+            <option value="1st Sem">1st Sem</option>
+            <option value="2nd Sem">2nd Sem</option>
+            <option value="3rd Sem">3rd Sem</option>
+            <option value="4th Sem">4th Sem</option>
+            <option value="5th Sem">5th Sem</option>
+            <option value="6th Sem">6th Sem</option>
+            <option value="7th Sem">7th Sem</option>
+            <option value="8th Sem">8th Sem</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Subject -->
+      <label>Subject Name</label>
+      <input name="subject" placeholder="e.g. Computer Architecture" required>
+
+      <!-- Chapter -->
+      <label>Chapter / Note Title</label>
+      <input name="chapter" placeholder="e.g. Module 1 - Microoperations" required>
+
+      <!-- Faculty / Uploaded By -->
+      <label>Faculty / Uploaded By</label>
+      <input name="author" placeholder="e.g. Prof. S. Das" required>
+
+      <!-- File Upload -->
+      <label>File Upload</label>
+      <div class="file-drop">
+        <input type="file" name="file" id="fileInput" accept=".pdf,.doc,.docx" required>
+        <div class="file-drop-ui">
+          <span class="upload-icon"><i class="fa-solid fa-upload"></i></span>
+          <p><strong>Click to upload</strong> or drag and drop</p>
+          <small>PDF, DOC, DOCX up to 10MB</small>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <a href="{{ url_for('index') }}" class="btn cancel-btn">Cancel</a>
+        <button class="btn primary upload-btn" type="submit"><i class="fa-solid fa-upload"></i> Upload</button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+
+{% endblock %}
